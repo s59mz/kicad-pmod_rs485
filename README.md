@@ -13,3 +13,6 @@ Schematic:
 
 BOM:
 [kicad-pmod_rs485.csv](kicad-pmod_rs485.csv)
+
+Gerbers:
+[gerbers.zip](https://github.com/s59mz/kicad-pmod_rs485/raw/main/gerbers.zip)

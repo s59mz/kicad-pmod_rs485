@@ -1,0 +1,128 @@
+
+(rules PCB kicad-pmod_rs485
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 1075)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 3.4)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.4)
+    )
+  )
+  (rule
+    (width 250.0)
+    (clear 200.2)
+    (clear 125.0 (type smd_to_turn_gap))
+    (clear 50.0 (type smd_smd))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_800:400_um-gnd" "Via[0-1]_800:400_um" gnd
+  )
+  (via 
+    "Via[0-1]_800:400_um-pwr" "Via[0-1]_800:400_um" pwr
+  )
+  (via 
+    "Via[0-1]_800:400_um-rs485" "Via[0-1]_800:400_um" rs485
+  )
+  (via_rule
+    default "Via[0-1]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+  )
+  (via_rule
+    gnd "Via[0-1]_800:400_um-gnd"
+  )
+  (via_rule
+    pwr "Via[0-1]_800:400_um-pwr"
+  )
+  (via_rule
+    rs485 "Via[0-1]_800:400_um-rs485"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    "Net-(D1-A)" "Net-(D2-A)" /led1 /led2 "Net-(J1-Pin_6)" "Net-(J1-Pin_8)" "Net-(J2-Pin_1)" /btn1
+    /btn2 "/re_n" /txd /rxd /de "Net-(R13-Pad2)" "Net-(R15-Pad2)"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class gnd
+    GND
+    (clearance_class gnd)
+    (via_rule gnd)
+    (rule
+      (width 500.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class pwr
+    +3V3 /Visoin /GND2 /Visoout /GND3
+    (clearance_class pwr)
+    (via_rule pwr)
+    (rule
+      (width 500.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class rs485
+    /A /B /Y /Z
+    (clearance_class rs485)
+    (via_rule rs485)
+    (rule
+      (width 350.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
